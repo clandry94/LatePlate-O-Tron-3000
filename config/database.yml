@@ -16,10 +16,10 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: LatePlatr_development
+  database: lateplatr-dev
   pool:     5
-  username: LatePlatr
-  password:
+  username: landry
+  password: password
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -44,18 +44,18 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: LatePlatr_test
+  database: lateplatr-test
   pool:     5
-  username: LatePlatr
-  password:
+  username: landry
+  password: password
   template: template0
 
 production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: LatePlatr_production
+  database: lateplatr-dev
   pool:     5
-  username: LatePlatr
-  password:
+  username: landry
+  password: password
   template: template0
