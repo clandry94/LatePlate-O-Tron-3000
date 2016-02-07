@@ -21,6 +21,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+gem 'rename'
 group :production do
   gem 'puma'
   gem 'rails_12factor'
