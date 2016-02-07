@@ -3,16 +3,30 @@
 
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1>Welcome to LatePlatr</h1>
+            <h1>Welcome to the LatePlate-O-Tron 3000</h1>
             <ul class="list-unstyled">
                 <li>Making lateplates easy.</li>
             </ul>
 
+
             <%= simple_form_for @plate do |f| %>
-              <%= f.input :name %>
-              <%= f.input :meal %>
+              <%= f.input :name, collection: @full_names %>
+              <%= f.input :meal, as: :select %>
               <%= f.input :request_day %>
+              <%= f.button :submit %>
             <% end %>
+
+
+
+            <ul class="list-unstyled">
+              <%= @plates.each do |plate| %>
+                <li>Name: <%= plate.name %></li>
+                <li>Meal: <%= plate.meal %></li>
+                <li>Day: <%= plate.request_day %></li>
+                </br>
+              <% end %>
+            </ul>
+
         </div>
     </div>
     <!-- /.row -->

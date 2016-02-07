@@ -1,5 +1,5 @@
 class Plate < ActiveRecord::Base
   def new
-    @post = Post.new
+    @plate = Plate.new
   end
 end
