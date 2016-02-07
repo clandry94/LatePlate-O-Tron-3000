@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'pathname'
+RailsRoot = Pathname.new(RAILS_ROOT).expand_path
+
+print "Loading data..."
+fileData = File.read (RailsRoot + "db/nameslist.txt")
