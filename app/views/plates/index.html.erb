@@ -18,19 +18,30 @@
 
 
             </br>
-      
+
 
             </br>
             </br>
 
-            <ul class="list-unstyled">
-              <%= @plates.each do |plate| %>
-                <li>Name: <%= plate.name %></li>
-                <li>Meal: <%= plate.meal %></li>
-                <li>Day: <%= plate.request_day %></li>
-                </br>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Meal</th>
+                  <th>Day</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @plates.each do |plate| %>
+                <tr>
+                  <td><%= plate.name %></td>
+                  <td><%= plate.meal %></td>
+                  <td><%= plate.request_day %></td>
+                </tr>
               <% end %>
-            </ul>
+              </tbody>
+            </table>
+
 
         </div>
     </div>

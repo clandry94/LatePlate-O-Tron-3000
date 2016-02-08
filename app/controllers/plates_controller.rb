@@ -3,9 +3,9 @@ class PlatesController < ApplicationController
   def index
       @plate = Plate.new
       @plates = Plate.all
-      @names = Name.all
+      names = Name.all
       @full_names = []
-      @names.each do |name|
+      names.each do |name|
         @full_names.push(name.full_name)
       end
   end
