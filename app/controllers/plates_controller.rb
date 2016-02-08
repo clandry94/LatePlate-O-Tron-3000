@@ -1,4 +1,5 @@
 class PlatesController < ApplicationController
+
   def index
       @plate = Plate.new
       @plates = Plate.all
@@ -7,7 +8,6 @@ class PlatesController < ApplicationController
       @names.each do |name|
         @full_names.push(name.full_name)
       end
-
   end
 
   def create

@@ -10,13 +10,18 @@
 
 
             <%= simple_form_for @plate do |f| %>
-              <%= f.input :name, collection: @full_names %>
-              <%= f.input :meal, as: :select %>
+              <%= f.input :name, label: 'Select a name', collection: @full_names, error: 'A name is required' %>
+              <%= f.input :meal, label: 'Select a meal', collection: ["Breakfast", "Dinner"], error: 'A meal is required' %>
               <%= f.input :request_day %>
               <%= f.button :submit %>
             <% end %>
 
 
+            </br>
+      
+
+            </br>
+            </br>
 
             <ul class="list-unstyled">
               <%= @plates.each do |plate| %>
