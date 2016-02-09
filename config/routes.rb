@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   root to: 'plates#index'
-  resources :plates
+  resources :plates do
+    post :delete_entry, :on => :collection
+  end
+
 end

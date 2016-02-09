@@ -37,6 +37,8 @@
                   <td><%= plate.name %></td>
                   <td><%= plate.meal %></td>
                   <td><%= plate.request_day %></td>
+                  <td><%= button_to "Delete", { action: "delete_entry", id: @plate.id },
+                                method: :delete_entry, data: { confirm: "Are you sure?" } %></td>
                 </tr>
               <% end %>
               </tbody>

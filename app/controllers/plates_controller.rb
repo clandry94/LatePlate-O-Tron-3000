@@ -8,11 +8,17 @@ class PlatesController < ApplicationController
       names.each do |name|
         @full_names.push(name.full_name)
       end
+      @id = params[:id]
   end
 
   def create
       @plate = Plate.create(post_params)
       redirect_to plates_path
+  end
+
+  def delete_entry()
+    @plate = Plate.destroy(@id)
+    redirect_to plates_path
   end
 
   private
