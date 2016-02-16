@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207042653) do
+ActiveRecord::Schema.define(version: 20160216001228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "daily_plates", force: :cascade do |t|
+    t.date     "request_date"
+    t.integer  "plate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "names", force: :cascade do |t|
     t.string   "full_name"
@@ -28,6 +35,17 @@ ActiveRecord::Schema.define(version: 20160207042653) do
     t.date     "request_day"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "recurring_plates", force: :cascade do |t|
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.integer  "plate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
