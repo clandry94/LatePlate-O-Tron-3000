@@ -15,10 +15,35 @@
               <%= f.button :submit, "Add breakast plate" %>
             <% end %>
 
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Day</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @breakfast_plates.each do |plate| %>
+               <tr>
+                 <td><%= User.find(plate.user_id).full_name %></td>
+                 <td><%= plate.request_day %></td>
+               </tr>
+                <% end %>
+              </tbody>
+            </table>
 
             </br>
+            </br>
+            </br>
+
+            <%= simple_form_for @dinner_plate, url: dinnerplates_path do |f| %>
+              <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+              <%= f.input :request_day, as: :date %>
+              <%= f.button :submit, "Add dinner plate" %>
+            <% end %>
 
 
+            </br>
             </br>
             </br>
 
@@ -26,13 +51,16 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Meal</th>
                   <th>Day</th>
                 </tr>
               </thead>
               <tbody>
-
-
+                <% @dinner_plates.each do |plate| %>
+               <tr>
+                 <td><%= User.find(plate.user_id).full_name %></td>
+                 <td><%= plate.request_day %></td>
+               </tr>
+                <% end %>
               </tbody>
             </table>
 

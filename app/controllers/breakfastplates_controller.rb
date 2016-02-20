@@ -1,9 +1,5 @@
 class BreakfastplatesController < ApplicationController
 
-  def index
-
-  end
-
   def create
     @breakfast_plate = BreakfastPlate.new(breakfast_params).save
     redirect_to users_path

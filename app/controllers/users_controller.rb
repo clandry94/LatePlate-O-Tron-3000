@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 
   def index
     @breakfast_plate = BreakfastPlate.new
+    @dinner_plate = DinnerPlate.new
+
+    @breakfast_plates = BreakfastPlate.all
+    @dinner_plates = DinnerPlate.all
+
     @users = User.all
     @full_names = []
     @users.each do |user|

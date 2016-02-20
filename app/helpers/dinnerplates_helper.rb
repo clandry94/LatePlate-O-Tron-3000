@@ -1,0 +1,2 @@
+module DinnerplatesHelper
+end
