@@ -35,6 +35,7 @@
             </br>
             </br>
             </br>
+            <hr>
 
             <%= simple_form_for @dinner_plate, url: dinnerplates_path do |f| %>
               <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
@@ -64,6 +65,97 @@
               </tbody>
             </table>
 
+
+          </br>
+          </br>
+          </br>
+
+          <hr>
+
+          <%= simple_form_for @recurring_breakfast_plate, url: recurringbreakfastplates_path do |f| %>
+            <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+            <%= f.input :monday %>
+            <%= f.input :tuesday %>
+            <%= f.input :wednesday %>
+            <%= f.input :thursday %>
+            <%= f.input :friday %>
+
+            <%= f.button :submit, "Add recurring breakfast plate" %>
+          <% end %>
+
+        </br>
+        </br>
+        </br>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recurring_breakfast_plates.each do |plate| %>
+           <tr>
+             <td><%= User.find(plate.user_id).full_name %></td>
+             <td><%= plate.monday %></td>
+             <td><%= plate.tuesday %></td>
+             <td><%= plate.wednesday %></td>
+             <td><%= plate.thursday %></td>
+             <td><%= plate.friday %></td>
+           </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </br>
+      </br>
+      </br>
+      <hr>
+
+          <%= simple_form_for @recurring_dinner_plate, url: recurringdinnerplates_path do |f| %>
+            <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+            <%= f.input :monday %>
+            <%= f.input :tuesday %>
+            <%= f.input :wednesday %>
+            <%= f.input :thursday %>
+            <%= f.input :friday %>
+
+            <%= f.button :submit, "Add recurring dinner plate" %>
+          <% end %>
+
+        </br>
+        </br>
+        </br>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recurring_dinner_plates.each do |plate| %>
+           <tr>
+             <td><%= User.find(plate.user_id).full_name %></td>
+             <td><%= plate.monday %></td>
+             <td><%= plate.tuesday %></td>
+             <td><%= plate.wednesday %></td>
+             <td><%= plate.thursday %></td>
+             <td><%= plate.friday %></td>
+           </tr>
+            <% end %>
+          </tbody>
+        </table>
 
         </div>
     </div>

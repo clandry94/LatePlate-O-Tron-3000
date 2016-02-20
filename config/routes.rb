@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   resources :users
   resources :breakfastplates
   resources :dinnerplates
-  resources :recurringdinnerplate
-  resources :recurringbreakfastplate
-  get 'add_breakfast_plate' => "users#add_breakfast_plate"
-  post 'add_breakfast_plate' => "users#add_breakfast_plate"
+  resources :recurringdinnerplates
+  resources :recurringbreakfastplates
+
 
 
 
