@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-  validates_presence_of :email, :password
+  has_many :DinnerPlates
+  has_many :BreakfastPlates
+  has_one :RecurringBreakfastPlate
+  has_one :RecurringDinnerPlate
 end

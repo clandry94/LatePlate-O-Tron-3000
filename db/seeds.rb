@@ -6,11 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Name.delete_all
-Plate.delete_all
+User.delete_all
+BreakfastPlate.delete_all
 
 File.open("#{Rails.root}/db/nameslist.txt") do |names|
   names.read.each_line do |full_name|
-    Name.create(:full_name => full_name)
+
+    User.create(:full_name => full_name)
   end
 end

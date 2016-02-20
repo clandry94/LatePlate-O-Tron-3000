@@ -9,11 +9,10 @@
             </ul>
 
 
-            <%= simple_form_for @plate do |f| %>
-              <%= f.input :name, label: 'Select a name', collection: @full_names, error: 'A name is required' %>
-              <%= f.input :meal, label: 'Select a meal', collection: ["Breakfast", "Dinner"], error: 'A meal is required' %>
-              <%= f.input :request_day %>
-              <%= f.button :submit %>
+            <%= simple_form_for @breakfast_plate, url: breakfastplates_path do |f| %>
+              <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+              <%= f.input :request_day, as: :date %>
+              <%= f.button :submit, "Add breakast plate" %>
             <% end %>
 
 
@@ -32,13 +31,8 @@
                 </tr>
               </thead>
               <tbody>
-              <% @plates.each do |plate| %>
-                <tr>
-                  <td><%= plate.name %></td>
-                  <td><%= plate.meal %></td>
-                  <td><%= plate.request_day %></td>
-                </tr>
-              <% end %>
+
+
               </tbody>
             </table>
 

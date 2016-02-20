@@ -1,0 +1,2 @@
+module BreakfastplatesHelper
+end
