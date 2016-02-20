@@ -8,10 +8,12 @@
 
 User.delete_all
 BreakfastPlate.delete_all
+DinnerPlate.delete_all
+RecurringBreakfastPlate.delete_all
+RecurringDinnerPlate.delete_all
 
 File.open("#{Rails.root}/db/nameslist.txt") do |names|
   names.read.each_line do |full_name|
-
     User.create(:full_name => full_name)
   end
 end
