@@ -16,7 +16,7 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: lateplatr-dev
+  database: LPoT-dev
   pool:     5
   username: landry
   password: password
@@ -44,7 +44,7 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: lateplatr-test
+  database: LPoT-test
   pool:     5
   username: landry
   password: password
@@ -54,7 +54,7 @@ production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: lateplatr-dev
+  database: LPoT-prod
   pool:     5
   username: landry
   password: password

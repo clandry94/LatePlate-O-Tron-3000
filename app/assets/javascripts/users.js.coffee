@@ -8,7 +8,6 @@ $ ->
   $("#dinner_button").click ->
     $("#dinner_div").toggle()
 
-
   $("#recur_breakfast_button").click ->
     $("#breakfast_recur_div").toggle()
 

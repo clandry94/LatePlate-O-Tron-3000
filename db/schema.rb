@@ -23,24 +23,11 @@ ActiveRecord::Schema.define(version: 20160218050814) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "daily_plates", force: :cascade do |t|
-    t.date     "request_date"
-    t.integer  "plate_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "dinner_plates", force: :cascade do |t|
     t.date     "request_day"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "names", force: :cascade do |t|
-    t.string   "full_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "recurring_breakfast_plates", force: :cascade do |t|

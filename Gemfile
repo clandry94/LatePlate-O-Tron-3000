@@ -7,23 +7,34 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'validates_timeliness'
-gem 'jquery-rails'
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
+gem 'rename'
+
+group :development, :test do
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+
+
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'web-console', '~> 2.0'
 end
-gem 'rename'
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'
