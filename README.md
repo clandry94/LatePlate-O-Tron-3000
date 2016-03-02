@@ -1,50 +1,29 @@
-Lateplatr
+LatePlate-O-Tron-3000
 ================
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
-
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
+Welcome to the LatePlate-O-Tron 3000. The LPoT was created by Conor Landry to solve the monotonous, daily chore of managing late plates (breakfast and dinner plates for members that aren't available to pick them up themselves) for members of the Florida Chapter of Delta Upsilon. 
 
 Problems? Issues?
 -----------
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+Feel free to contact me at clandry94@ufl.edu or file an issue on this page. 
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
+Planned features
+-----------
+Currently, the first milestone of the LPoT was released on 3/1/2016. There is still a lot to be done, and it would be hard to say that the system is ready for production use as it is still a WiP. 
 
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+I plan on completing the following:
+  - Individual users and authentication system
+  - Removal of daily plates and modification of recurring plates
+  - Implemenation of message sending to chefs (script is complete, mainly need implemented)
+  - Dinner Manager dashboard for complete control of message sending, plates, etc.
+  - And many more
 
-Ruby on Rails
+Requirements
 -------------
 
 This application requires:
 
 - Ruby 2.3.0
 - Rails 4.2.3
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
+- Postgresql 
