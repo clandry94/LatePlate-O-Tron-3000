@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Late Platr" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "LatePlate-o-Tron 3000!" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Late Platr" %>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -15,6 +15,7 @@
     <main role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>
+       <%= debug(params) if Rails.env.development? %>
     </main>
   </body>
 </html>
