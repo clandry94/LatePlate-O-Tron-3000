@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/create_dailyplate'
+  root to: 'users#new'
+  get 'create' => 'users#index'
 
-  get 'users/create_recurringplate'
 
-  root to: 'users#index'
   resources :users
   resources :breakfastplates
   resources :dinnerplates

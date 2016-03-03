@@ -12,6 +12,8 @@ gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
 gem 'rename'
+gem 'phonelib'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'spring'
