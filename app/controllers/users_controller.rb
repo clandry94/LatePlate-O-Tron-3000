@@ -31,12 +31,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the LatePlate-o-Tron 3000!"
-      redirect_to user_url(@user) #handle successful signup
-    else
-      render 'new'
+
+    if User.where(:email_address => @user.email_address).blank?
+      if @user.save
+        log_in @user
+        flash[:success] = "Welcome to the LatePlate-o-Tron 3000!"
+        redirect_to user_url(@user) #handle successful signup
+      else
+        render 'new'
+      end
+    elsif !User.where(:email_address => @user.email_address).blank?
+      flash[:danger] = "A user with this email address already exists!"
+      redirect_to root_url
     end
   end
 
