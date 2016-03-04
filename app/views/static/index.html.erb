@@ -1,14 +1,26 @@
 <% content_for :title do %>Home<% end %>
-<div class="row">
-  <div class="col-md-6 col-md-offset-4">
+<div class='row'>
+  <div class='col-md-6 col-md-offset-4'>
     <h3>Welcome to the LatePlate-o-Tron 3000!</h3>
   </div>
 </div>
-
-<div class = "row">
-  <div class="col-md-2 col-md-offset-5">
-    <p>
-      <%= button_to "Sign Up", signup_path, :method => :get, :class => "btn btn-primary"  %><br />
-    </p>
+<% if !logged_in? %>
+  <div class = 'row'>
+    <div class='col-md-2 col-md-offset-5'>
+      <p>
+        <%= button_to 'Log in', login_path, :method => :get, :class => 'btn btn-primary'  %><br />
+        <%= button_to 'Sign Up', signup_path, :method => :get, :class => 'btn btn-primary'  %><br />
+      </p>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class = 'row'>
+    <div class='col-md-2 col-md-offset-5'>
+      <p>
+        <%= button_to 'Manage LatePlates', '#', :method => :get, :class => 'btn btn-primary'  %><br />
+        <%= button_to 'View Profile', current_user, :method => :get, :class => 'btn btn-primary'  %><br />
+        <%= button_to 'Settings', '#', :method => :get, :class => 'btn btn-primary'  %>
+      </p>
+    </div>
+  </div>
+<% end %>
