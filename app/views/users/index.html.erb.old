@@ -1,0 +1,189 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1>Welcome to the LatePlate-O-Tron 3000</h1>
+
+        <ul class="list-unstyled">
+          <li>Making lateplates easy.</li>
+        </ul>
+        <input type="button" id="breakfast_button" value="Add 1 Breakfast Plate"/></br>
+        </br>
+        <input type="button" id="dinner_button" value="Add 1 Dinner Plate"/></br>
+        </br>
+        <input type="button" id="recur_breakfast_button" value="Add Recurring Breakfast Plate"/></br>
+        </br>
+        <input type="button" id="recur_dinner_button" value="Add Recurring Dinner Plate"/></br>
+
+        <div id="breakfast_div" style="display:none">
+            <%= simple_form_for @breakfast_plate, url: breakfastplates_path do |f| %>
+              <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+              <%= f.input :request_day, as: :date %>
+              <%= f.button :submit, "Add breakast plate" %>
+            <% end %>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+
+                  <th>Day</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @breakfast_plates.each do |plate| %>
+
+                <tr>
+                  <td><%= User.find(plate.user_id).full_name %></td>
+
+                  <td><%= plate.request_day %></td>
+                </tr><% end %>
+              </tbody>
+            </table></br>
+            </br>
+            </br>
+            <hr />
+          </div>
+
+        <div id="dinner_div" style="display:none">
+            <%= simple_form_for @dinner_plate, url: dinnerplates_path do |f| %>
+              <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+              <%= f.input :request_day, as: :date %><%= f.button :submit, "Add dinner plate" %>
+            <% end %></br>
+
+            </br>
+            </br>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+
+                  <th>Day</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @dinner_plates.each do |plate| %>
+
+                <tr>
+                  <td><%= User.find(plate.user_id).full_name %></td>
+
+                  <td><%= plate.request_day %></td>
+                </tr><% end %>
+              </tbody>
+            </table>
+          </div></br>
+          </br>
+          </br>
+          <hr />
+        </div>
+
+        <div id="breakfast_recur_div" style="display:none">
+          <%= simple_form_for @recurring_breakfast_plate, url: recurringbreakfastplates_path do |f| %>
+            <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+            <%= f.input :monday %><%= f.input :tuesday %><%= f.input :wednesday %>
+            <%= f.input :thursday %><%= f.input :friday %>
+            <%= f.button :submit, "Add recurring breakfast plate" %>
+          <% end %></br>
+
+          </br>
+          </br>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Monday</th>
+
+                <th>Tuesday</th>
+
+                <th>Wednesday</th>
+
+                <th>Thursday</th>
+
+                <th>Friday</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @recurring_breakfast_plates.each do |plate| %>
+
+              <tr>
+                <td><%= User.find(plate.user_id).full_name %></td>
+
+                <td><%= plate.monday %></td>
+
+                <td><%= plate.tuesday %></td>
+
+                <td><%= plate.wednesday %></td>
+
+                <td><%= plate.thursday %></td>
+
+                <td><%= plate.friday %></td>
+              </tr><% end %>
+            </tbody>
+          </table></br>
+          </br>
+          </br>
+          <hr />
+        </div>
+
+        <div id="dinner_recur_div" style="display:none">
+
+          <%= simple_form_for @recurring_dinner_plate, url: recurringdinnerplates_path do |f| %>
+          <%= f.association :user, :label => "Select a Name", :label_method => :full_name, :value_method => :id %>
+            <%= f.input :monday %>
+            <%= f.input :tuesday %>
+            <%= f.input :wednesday %>
+            <%= f.input :thursday %>
+            <%= f.input :friday %>
+          <%= f.button :submit, "Add recurring dinner plate" %>
+          <% end %>
+
+          </br>
+
+          </br>
+          </br>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Monday</th>
+
+                <th>Tuesday</th>
+
+                <th>Wednesday</th>
+
+                <th>Thursday</th>
+
+                <th>Friday</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @recurring_dinner_plates.each do |plate| %>
+
+              <tr>
+                <td><%= User.find(plate.user_id).full_name %></td>
+
+                <td><%= plate.monday %></td>
+
+                <td><%= plate.tuesday %></td>
+
+                <td><%= plate.wednesday %></td>
+
+                <td><%= plate.thursday %></td>
+
+                <td><%= plate.friday %></td>
+              </tr><% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->

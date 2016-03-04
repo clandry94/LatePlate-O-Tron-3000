@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true
   validates :email_address, :presence => true, format: { with: EMAIL_REGEX, on: :create }
   validates :phone_number, :presence => true
-  validates :password, presence: true, length: { minimum: 8 }
-  validate :check_password_equals_confirmation
+  #validate :check_password_equals_confirmation  # doesn't allow profile updates, look into this
 
   has_secure_password
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
   has_many :DinnerPlates
   has_many :BreakfastPlates

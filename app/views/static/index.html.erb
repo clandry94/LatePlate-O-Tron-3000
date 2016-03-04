@@ -19,7 +19,7 @@
       <p>
         <%= button_to 'Manage LatePlates', '#', :method => :get, :class => 'btn btn-primary'  %><br />
         <%= button_to 'View Profile', current_user, :method => :get, :class => 'btn btn-primary'  %><br />
-        <%= button_to 'Settings', '#', :method => :get, :class => 'btn btn-primary'  %>
+        <%= button_to 'Settings', edit_user_path(current_user), :method => :get, :class => 'btn btn-primary'  %>
       </p>
     </div>
   </div>

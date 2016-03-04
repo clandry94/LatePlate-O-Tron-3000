@@ -14,6 +14,8 @@ gem 'simple_form'
 gem 'rename'
 gem 'phonelib'
 gem 'bcrypt'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'spring'
