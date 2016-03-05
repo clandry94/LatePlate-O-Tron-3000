@@ -6,6 +6,9 @@ class BreakfastplatesController < ApplicationController
     if Date.yesterday > @breakfast_plate.request_day
       flash[:danger] = 'Please select a day after ' + Date.yesterday.to_s
       redirect_to manage_plates_path
+    elsif @breakfast_plate.request_day.wday == 6 || @breakfast_plate.request_day.wday == 0
+      flash[:danger] = 'Breakfast is only served on weekdays. Please try again.'
+      redirect_to manage_plates_path
     elsif @breakfast_plate.save
       flash[:success] = 'A breakfast plate has been reserved for you on ' +
                         @breakfast_plate.request_day.strftime("%m-%d-%Y") + '.'
