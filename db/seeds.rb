@@ -19,7 +19,7 @@ User.create(first_name: 'Conor',
             password_confirmation: 'password',
             admin: true)
 
-99.times do |n|
+99.times do |_n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email_address = Faker::Internet.email

@@ -31,13 +31,13 @@ group :test do
   gem 'launchy'
 end
 
-
 group :development do
   gem 'better_errors'
-  gem 'hub', :require=>nil
+  gem 'hub', require: nil
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'web-console', '~> 2.0'
+  gem 'rubocop', require: false
 end
 
 group :production do

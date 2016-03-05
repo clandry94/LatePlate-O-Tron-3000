@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
 
   before_save { self.email_address = email_address.downcase }
 
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-  validates :email_address, :presence => true, format: { with: EMAIL_REGEX, on: :create }
-  validates :phone_number, :presence => true
-  #validate :check_password_equals_confirmation  # doesn't allow profile updates, look into this
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email_address, presence: true, format: { with: EMAIL_REGEX, on: :create }
+  validates :phone_number, presence: true
+  # validate :check_password_equals_confirmation  # doesn't allow profile updates, look into this
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
@@ -21,18 +21,18 @@ class User < ActiveRecord::Base
 
   def check_password_equals_confirmation
     if password != password_confirmation
-      errors.add(:password, "Is not equal to password confirmation!")
+      errors.add(:password, 'Is not equal to password confirmation!')
     end
   end
 
   # Returns the hash digest of the given string.
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -42,12 +42,12 @@ class User < ActiveRecord::Base
   end
 
   # Returns true if the given token matches the digest.
- def authenticated?(remember_token)
-   BCrypt::Password.new(remember_digest).is_password?(remember_token)
- end
+  def authenticated?(remember_token)
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
 
- # Forgets the current user
- def forget
+  # Forgets the current user
+  def forget
     update_attribute(:remember_digest, nil)
- end
+  end
 end

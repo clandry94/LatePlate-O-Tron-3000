@@ -1,0 +1,48 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <ul class="list-unstyled">
+          <li>Making lateplates easy.</li>
+        </ul>
+
+        <div>
+          <div class="col-md-6 col-md-offset-3">
+              <input type="button" id="breakfast_button" class='btn btn-primary' value="Add 1 Breakfast Plate"/></br>
+            </br>
+              <input type="button" id="dinner_button" class='btn btn-primary' value="Add 1 Dinner Plate"/></br>
+            </br>
+              <input type="button" id="recur_breakfast_button" class='btn btn-primary' value="Add Recurring Breakfast Plate"/></br>
+            </br>
+              <input type="button" id="recur_dinner_button" class='btn btn-primary' value="Add Recurring Dinner Plate"/></br>
+          </div>
+
+          <div class="col-md-6 col-md-offset-3">
+            <div id="breakfast_div" style="display:none">
+              <%= form_for @breakfast_plate, url: create_breakfast_plate_path do |f| %>
+                <%= f.label :request_day %>
+                <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
+                <%= f.submit "Submit", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+
+            <div id="dinner_div" style="display:none">
+              <%= form_for @dinner_plate, url: create_dinner_plate_path do |f| %>
+                <%= f.label :request_day %>
+                <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
+                <%= f.submit "Submit", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+
+            <div id="breakfast_recur_div" style="display:none">
+              <p>Breakfast recur div</p>
+            </div>
+
+            <div id="dinner_recur_div" style="display:none">
+              <p>Dinner recur div</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
