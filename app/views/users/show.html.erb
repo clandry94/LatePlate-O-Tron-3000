@@ -1,5 +1,6 @@
 <% provide(:title, @user.first_name + " " + @user.last_name) %>
 <div class="row">
+  <aside class="col-md-1"></aside>
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
@@ -9,5 +10,112 @@
       <h5>Email: <%= @user.email_address %>
       <h5>Phone: <%= @user.phone_number %>
     </section>
+  </aside>
+  <aside class="col-md-4"></aside>
+  <aside class="col-md-4">
+  <section class="plate_info">
+    <h1>
+      Your saved LatePlates
+    </h1>
+  </section>
+
+  <section class="plate_info">
+      <h4>Breakfast LatePlates</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date (mm/dd/yyyy)</th>
+
+            <th>Day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @breakfast_plates.each do |plate| %>
+            <tr>
+              <td><center><%= plate.request_day.strftime("%m-%d-%Y") %></center></td>
+              <td><center><%= plate.request_day.strftime("%A") %> </center></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+    <section class="plate_info">
+        <h4>Dinner LatePlates</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date (mm/dd/yyyy)</th>
+
+              <th>Day</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @dinner_plates.each do |plate| %>
+              <tr>
+                <td><center><%= plate.request_day.strftime("%m-%d-%Y") %></center></td>
+                <td><center><%= plate.request_day.strftime("%A") %> </center></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </section>
+      <section class="plate_info">
+          <h4>Recurring Breakfast LatePlates</h4>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Monday</th>
+
+                <th>Tuesday</th>
+
+                <th>Wednesday</th>
+
+                <th>Thursday</th>
+
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                  <td><center><%= @recur_breakfast_plates[0]['monday'] %></center></td>
+                  <td><center><%= @recur_breakfast_plates[0]['tuesday'] %></center></td>
+                  <td><center><%= @recur_breakfast_plates[0]['wednesday'] %></center></td>
+                  <td><center><%= @recur_breakfast_plates[0]['thursday'] %></center></td>
+                  <td><center><%= @recur_breakfast_plates[0]['friday'] %></center></td>
+                </tr>
+
+            </tbody>
+          </table>
+        </section>
+        <section class="plate_info">
+            <h4>Recurring Dinner LatePlates</h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Monday</th>
+
+                  <th>Tuesday</th>
+
+                  <th>Wednesday</th>
+
+                  <th>Thursday</th>
+
+                  <th>Friday</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+                    <td><center><%= @recur_dinner_plates[0]['monday'] %></center></td>
+                    <td><center><%= @recur_dinner_plates[0]['tuesday'] %></center></td>
+                    <td><center><%= @recur_dinner_plates[0]['wednesday'] %></center></td>
+                    <td><center><%= @recur_dinner_plates[0]['thursday'] %></center></td>
+                    <td><center><%= @recur_dinner_plates[0]['friday'] %></center></td>
+                  </tr>
+
+              </tbody>
+            </table>
+          </section>
   </aside>
 </div>

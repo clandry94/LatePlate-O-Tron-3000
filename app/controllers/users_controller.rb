@@ -47,6 +47,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @breakfast_plates = BreakfastPlate.where(user_id: current_user.id)
+    @dinner_plates = DinnerPlate.where(user_id: current_user.id)
+    @recur_breakfast_plates = RecurringBreakfastPlate.where(user_id: current_user.id)
+    @recur_dinner_plates = RecurringDinnerPlate.where(user_id: current_user.id)
     # byebug
   end
 
