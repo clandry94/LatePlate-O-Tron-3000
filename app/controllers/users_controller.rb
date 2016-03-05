@@ -1,25 +1,9 @@
+include UsersHelper
+
 class UsersController < ApplicationController
   before_action :logged_in, only: [:index, :edit, :update, :show, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
-
-  # def index
-  #   @breakfast_plate = BreakfastPlate.new
-  #   @dinner_plate = DinnerPlate.new
-  #   @recurring_breakfast_plate = RecurringBreakfastPlate.new
-  #   @recurring_dinner_plate = RecurringDinnerPlate.new
-
-  #   @breakfast_plates = BreakfastPlate.all
-  #   @dinner_plates = DinnerPlate.all
-  #   @recurring_breakfast_plates = RecurringBreakfastPlate.all
-  #   @recurring_dinner_plates = RecurringDinnerPlate.all
-
-  #   @users = User.all
-  #   @full_names = []
-  #   @users.each do |user|
-  #     @full_names.push(user.full_name)
-  #   end
-  # end
 
   def index
     @users = User.paginate(page: params[:page])
@@ -32,15 +16,15 @@ class UsersController < ApplicationController
   def manage_plates
     @breakfast_plate = BreakfastPlate.new
     @dinner_plate = DinnerPlate.new
-    @recurring_breakfast_plate = RecurringBreakfastPlate.new
-    @recurring_dinner_plate = RecurringDinnerPlate.new
+    @recur_breakfast_plate = RecurringBreakfastPlate.new
+    @recur_dinner_plate = RecurringDinnerPlate.new
 
-    @breakfast_plates = BreakfastPlate.all
-    @dinner_plates = DinnerPlate.all
-    @recurring_breakfast_plates = RecurringBreakfastPlate.all
-    @recurring_dinner_plates = RecurringDinnerPlate.all
+    @breakfast_plates = BreakfastPlate.where(user_id: current_user.id)
+    @dinner_plates = DinnerPlate.where(user_id: current_user.id)
+    # @recurring_breakfast_plates = RecurringBreakfastPlate.all
+    # @recurring_dinner_plates = RecurringDinnerPlate.all
 
-    @users = User.all
+    # @users = User.all
   end
 
   def create
@@ -48,6 +32,7 @@ class UsersController < ApplicationController
 
     if User.where(email_address: @user.email_address).blank?
       if @user.save
+        init_recur_plates @user
         log_in @user
         flash[:success] = 'Welcome to the LatePlate-o-Tron 3000!'
         redirect_to user_url(@user) # handle successful signup

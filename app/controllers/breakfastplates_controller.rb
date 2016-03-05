@@ -8,9 +8,14 @@ class BreakfastplatesController < ApplicationController
       redirect_to manage_plates_path
     elsif @breakfast_plate.save
       flash[:success] = 'A breakfast plate has been reserved for you on ' +
-                        @breakfast_plate.request_day.to_s + '.'
+                        @breakfast_plate.request_day.strftime("%m-%d-%Y") + '.'
       redirect_to manage_plates_path
     end
+  end
+
+  def destroy
+    BreakfastPlate.destroy(params[:id])
+    redirect_to manage_plates_path
   end
 
   private

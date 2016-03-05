@@ -11,57 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_304_161_404) do
+ActiveRecord::Schema.define(version: 20160304161404) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'breakfast_plates', force: :cascade do |t|
-    t.date     'request_day'
-    t.integer  'user_id'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "breakfast_plates", force: :cascade do |t|
+    t.date     "request_day"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table 'dinner_plates', force: :cascade do |t|
-    t.date     'request_day'
-    t.integer  'user_id'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "dinner_plates", force: :cascade do |t|
+    t.date     "request_day"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table 'recurring_breakfast_plates', force: :cascade do |t|
-    t.integer  'user_id'
-    t.boolean  'monday'
-    t.boolean  'tuesday'
-    t.boolean  'wednesday'
-    t.boolean  'thursday'
-    t.boolean  'friday'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "recurring_breakfast_plates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'recurring_dinner_plates', force: :cascade do |t|
-    t.integer  'user_id'
-    t.boolean  'monday'
-    t.boolean  'tuesday'
-    t.boolean  'wednesday'
-    t.boolean  'thursday'
-    t.boolean  'friday'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "recurring_dinner_plates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.datetime 'created_at',                      null: false
-    t.datetime 'updated_at',                      null: false
-    t.string   'first_name'
-    t.string   'last_name'
-    t.string   'email_address'
-    t.string   'phone_number'
-    t.string   'password_digest'
-    t.string   'remember_digest'
-    t.boolean  'admin', default: false
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",           default: false
   end
 
-  add_index 'users', ['email_address'], name: 'index_users_on_email_address', unique: true, using: :btree
+  add_index "users", ["email_address"], name: "index_users_on_email_address", unique: true, using: :btree
+
 end

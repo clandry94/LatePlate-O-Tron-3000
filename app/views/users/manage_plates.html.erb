@@ -1,47 +1,163 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <ul class="list-unstyled">
-          <li>Making lateplates easy.</li>
-        </ul>
+        <h1>Manage LatePlates</h1>
+        </br>
 
         <div>
           <div class="col-md-6 col-md-offset-3">
-              <input type="button" id="breakfast_button" class='btn btn-primary' value="Add 1 Breakfast Plate"/></br>
+              <input type="button" id="breakfast_button" class='btn btn-primary' value="Add/Remove Breakfast Plate"/></br>
+
+              <div id="breakfast_div" style="display:none">
+                </br>
+                <%= form_for @breakfast_plate, url: create_breakfast_plate_path do |f| %>
+                  <%= f.label :request_day %>
+                  <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
+                  <%= f.submit "Submit", class: "btn btn-xs btn-success" %>
+                <% end %>
+                <!-- Saved plates table -->
+                </br>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date (mm/dd/yyyy)</th>
+
+                      <th>Day</th>
+
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @breakfast_plates.each do |plate| %>
+                      <tr>
+                        <td><%= plate.request_day.strftime("%m-%d-%Y") %></td>
+                        <td><%= plate.request_day.strftime("%A") %> </td>
+                        <td>
+                          <%= button_to 'Delete', destroy_breakfast_plate_path(:id => plate.id), :method => :post, :class => 'btn btn-xs btn-danger'  %><br />
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <!-- End saved plates table -->
+
+              </div>
+
             </br>
-              <input type="button" id="dinner_button" class='btn btn-primary' value="Add 1 Dinner Plate"/></br>
+              <input type="button" id="dinner_button" class='btn btn-primary' value="Add/Remove Dinner Plate"/></br>
+
+              <div id="dinner_div" style="display:none">
+                <%= form_for @dinner_plate, url: create_dinner_plate_path do |f| %>
+                  </br>
+                  <%= f.label :request_day %>
+                  <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
+                  <%= f.submit "Submit", class: "btn btn-xs btn-success" %>
+                <% end %>
+                <!-- Saved plates table -->
+                </br>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date (mm/dd/yyyy)</th>
+
+                      <th>Day</th>
+
+                      <th>Delete?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @dinner_plates.each do |plate| %>
+                      <tr>
+                        <td><%= plate.request_day.strftime("%m-%d-%Y") %></td>
+                        <td><%= plate.request_day.strftime("%A") %> </td>
+                        <td>
+                          <%= button_to 'Delete', destroy_dinner_plate_path(:id => plate.id), :method => :post, :class => 'btn btn-xs btn-danger'  %><br />
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <!-- End saved plates table -->
+              </div>
+
             </br>
-              <input type="button" id="recur_breakfast_button" class='btn btn-primary' value="Add Recurring Breakfast Plate"/></br>
+              <input type="button" id="recur_breakfast_button" class='btn btn-primary' value="Edit Recurring Breakfast Plates"/></br>
+
+              <div id="breakfast_recur_div" style="display:none">
+                <%= form_for @recur_breakfast_plate, url: update_recur_breakfast_plate_path do |f| %>
+                  </br>
+                  <div class='field form-group'>
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:monday) %>
+                      <%= label_tag(:monday, "Monday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:tuesday) %>
+                      <%= label_tag(:tuesday, "Tuesday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:wednesday) %>
+                      <%= label_tag(:wednesday, "Wednesday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                    <%= check_box_tag(:thursday) %>
+                    <%= label_tag(:thursday, "Thursday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:friday) %>
+                      <%= label_tag(:friday, "Friday") %>
+                    </div>
+                    </br>
+                    </br>
+                    <%= f.submit "Submit", class: "btn btn-xs btn-success" %>
+
+                  </div>
+                <% end %>
+              </div>
+
             </br>
-              <input type="button" id="recur_dinner_button" class='btn btn-primary' value="Add Recurring Dinner Plate"/></br>
+              <input type="button" id="recur_dinner_button" class='btn btn-primary' value="Edit Recurring Dinner Plates"/></br>
+
+              <div id="dinner_recur_div" style="display:none">
+                <%= form_for @recur_dinner_plate, url: update_recur_dinner_plate_path do |f| %>
+                  </br>
+                  <div class='field form-group'>
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:monday) %>
+                      <%= label_tag(:monday, "Monday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:tuesday) %>
+                      <%= label_tag(:tuesday, "Tuesday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:wednesday) %>
+                      <%= label_tag(:wednesday, "Wednesday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                    <%= check_box_tag(:thursday) %>
+                    <%= label_tag(:thursday, "Thursday") %>
+                    </div>
+
+                    <div class='checkbox-inline'>
+                      <%= check_box_tag(:friday) %>
+                      <%= label_tag(:friday, "Friday") %>
+                    </div>
+                    </br>
+                    </br>
+                    <%= f.submit "Submit", class: "btn btn-xs btn-success" %>
+
+                  </div>
+                <% end %>
+            </div>
           </div>
-
-          <div class="col-md-6 col-md-offset-3">
-            <div id="breakfast_div" style="display:none">
-              <%= form_for @breakfast_plate, url: create_breakfast_plate_path do |f| %>
-                <%= f.label :request_day %>
-                <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
-                <%= f.submit "Submit", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-
-            <div id="dinner_div" style="display:none">
-              <%= form_for @dinner_plate, url: create_dinner_plate_path do |f| %>
-                <%= f.label :request_day %>
-                <%= f.date_select(:request_day, :order => [:month, :day, :year]) %>
-                <%= f.submit "Submit", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-
-            <div id="breakfast_recur_div" style="display:none">
-              <p>Breakfast recur div</p>
-            </div>
-
-            <div id="dinner_recur_div" style="display:none">
-              <p>Dinner recur div</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </div><!-- /.row -->
