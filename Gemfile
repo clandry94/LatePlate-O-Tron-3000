@@ -16,6 +16,7 @@ gem 'phonelib'
 gem 'bcrypt'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'spring'
