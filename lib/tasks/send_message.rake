@@ -4,7 +4,7 @@ require_relative '../message_sender/sms_sender.rb'
 desc "This task sends a list of breakfast or dinner plates to the chef"
 task :send_message => :environment do
   request_day = Date.today
-  unless request_day.wday == 6 || request_day.wday == 0 ||
+  unless request_day.wday == 6 || request_day.wday == 0 
 
     puts "Initializing..."
     sms = SmsBuilder.new(request_day, resolve_time)
