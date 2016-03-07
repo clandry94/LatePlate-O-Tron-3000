@@ -13,9 +13,9 @@ Planned features
 Currently, the first milestone of the LPoT was released on 3/1/2016. There is still a lot to be done, and it would be hard to say that the system is ready for production use as it is still a WiP.
 
 I plan on completing the following:
-  - Individual users and authentication system
-  - Removal of daily plates and modification of recurring plates
-  - Implementation of message sending to chefs (script is complete, mainly need implemented)
+  - ~~Individual users and authentication system~~ DONE
+  - ~~Removal of daily plates~~ and modification of recurring plates (removal DONE)
+  - ~~Implementation of message sending to chefs (script is complete, mainly need implemented)~~ DONE
   - Dinner Manager dashboard for complete control of message sending, plates, etc.
   - And many more
 
