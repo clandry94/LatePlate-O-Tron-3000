@@ -17,6 +17,7 @@ gem 'bcrypt'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'twilio-ruby'
+gem 'figaro'
 
 group :development, :test do
   gem 'spring'
