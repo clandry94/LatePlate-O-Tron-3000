@@ -5,14 +5,22 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
+  # Set up pages using the paginate gem
+  # TODO: Change number of users per page
   def index
     @users = User.paginate(page: params[:page])
   end
 
+  # Creates a new user
   def new
     @user = User.new
   end
 
+  # Main method behind the creation of plates of users
+  # FIXME: Fix recurring late plate modification, currently doesn't work and
+  # updates are not saved
+  #
+  # OPTIMIZE: Use rails associations for creation instead of by hand
   def manage_plates
     @breakfast_plate = BreakfastPlate.new
     @dinner_plate = DinnerPlate.new
@@ -23,28 +31,33 @@ class UsersController < ApplicationController
     @dinner_plates = DinnerPlate.where(user_id: current_user.id)
     @recur_breakfast_plates = RecurringBreakfastPlate.where(user_id: current_user.id)
     @recur_dinner_plates = RecurringDinnerPlate.where(user_id: current_user.id)
-
-    # @users = User.all
   end
 
+  # Creates a new user and handles validation issues
+  # OPTIMIZE: use build in validations instead of by hand
   def create
     @user = User.new(user_params)
 
+    # Ensure the email addres is not a duplicate
+    # If blank? returns true, then there is no user in the
+    # database that has the same email as the user being created
     if User.where(email_address: @user.email_address).blank?
       if @user.save
-        init_recur_plates @user
-        log_in @user
+        init_recur_plates @user # Setup recurring plate entry
+        log_in @user  # log in user right after sign up
         flash[:success] = 'Welcome to the LatePlate-o-Tron 3000!'
         redirect_to user_url(@user) # handle successful signup
       else
         render 'new'
       end
+    # Make the user retry if the email is already being used
     elsif !User.where(email_address: @user.email_address).blank?
       flash[:danger] = 'A user with this email address already exists!'
       redirect_to root_url
     end
   end
 
+  # Show user information on profile page
   def show
     @user = User.find(params[:id])
     @breakfast_plates = BreakfastPlate.where(user_id: current_user.id)
@@ -58,6 +71,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # Update attributes of a user
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -68,6 +82,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # Destroy a user
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'

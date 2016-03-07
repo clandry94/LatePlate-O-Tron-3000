@@ -1,3 +1,4 @@
+# A basic data stucture to store a full name of a user
 class Name
 
   attr_accessor :first_name, :last_name

@@ -11,6 +11,8 @@ class SmsBuilder
     @message = build_message(meal, names)
   end
 
+  # Create the message to be sent.
+  # Returns message based on the meal param
   def build_message(meal, names)
     if meal == 0
       message = "Breakfast: \n" + names
@@ -26,6 +28,9 @@ class SmsBuilder
 
   private
 
+  # Connects to the database and retrieve the breakfast plates and dinner plates
+  # saved using ActiveRecord.
+  # Returns names for breakfast plate or dinner plate based on the meal param
   def retrieve_names(meal)
     @names = ''
     begin

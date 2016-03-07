@@ -10,7 +10,8 @@ class SmsSender
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-
+  # Sends a text message to the phone number given in the param with the
+  # message given in the param
   def send_message(ph_number, message)
     message = @client.account.messages.create({
     	:from => '+18325987523',

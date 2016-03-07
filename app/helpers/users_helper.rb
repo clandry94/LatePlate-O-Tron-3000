@@ -1,4 +1,6 @@
 module UsersHelper
+
+  # Set up two initial recurring plates for modification 
   def init_recur_plates user
     recur_breakfast_plate = RecurringBreakfastPlate.new(recur_params)
     recur_breakfast_plate.user_id = user.id
